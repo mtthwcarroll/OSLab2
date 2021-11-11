@@ -13,10 +13,22 @@ enum Note {
     F4S,
     G4,
     G4S,
-    A5;
+    A5,
+    A5S,
+    B5,
+    C5,
+    C5S,
+    D5,
+    D5S,
+    E5,
+    F5,
+    F5S,
+    G5,
+    G5S,
+    A6;
 
     public static final int SAMPLE_RATE = 48 * 1024; // ~48KHz
-    public static final int MEASURE_LENGTH_SEC = 1;
+    public static final int MEASURE_LENGTH_SEC = 2;
 
     // Circumference of a circle divided by # of samples
     private static final double step_alpha = (2.0d * Math.PI) / SAMPLE_RATE;
@@ -26,6 +38,9 @@ enum Note {
 
     private final byte[] sinSample = new byte[MEASURE_LENGTH_SEC * SAMPLE_RATE];
 
+    /**
+     * Calculates the proper frequency to play any note in the enumeration.
+     */
     private Note() {
         int n = this.ordinal();
         if (n > 0) {
